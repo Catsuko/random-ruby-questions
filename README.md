@@ -169,14 +169,14 @@ The problem was the first ? which allowed zero matches of (ts|tsx) (matching ., 
 File.dirname(__FILE__)
 ```
 
-- *give me answer*
+- 'precious'
 
 ```ruby
 # /User/tom/junk/ring.rb
 File.path(__dir__)
 ```
 
-- *give me answer*
+- '/User/tom/junk/'
 
 #### Write the following method that would give me the correct return value:
 
