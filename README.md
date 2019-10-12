@@ -2,9 +2,9 @@
 
 ```ruby
 class Document
-   attr_writer :content 
+   attr_accessor :content, :title
 
-  def initialise
+  def initialize content = "", title = ""
     @content = content
     @title = title
   end
@@ -22,11 +22,14 @@ puts doc.title
 puts doc.content
 puts doc
 ```
+- Use attr_accessor instead of writer so you can read and assign to content and title
+- add default parameter values to constructor so you can create a Document without any parameters
+- initialise -> initialize
 
 #### I made a mistake in the RubyExam, can you find it?
 
 ```ruby
-module RubyExam
+class RubyExam
   def initialize
     @score = 0
     @current_question = 1
@@ -68,11 +71,15 @@ exam.got_one_wrong
 exam.complete
 ```
 
+Module -> Class
+
+The redo and complete methods feel odd but they work @_@
+
 #### What are 3 ways to create a new Hash?
 
-- *give me answer*
-- *give me answer*
-- *give me answer*
+- {}
+- Hash.new
+- [].to_h (this is the best i got, no clue for a third way)
 
 #### Which of the following are valid for __X__?
 
@@ -91,11 +98,11 @@ end
 ```
 
 - [ ] `Error => e`
-- [ ] *nothing*
+- [X] *nothing*
 - [ ] `SystemError => e`
-- [ ] `ArgumentError => e`
-- [ ] `StandardError => e`
-- [ ] `ArgumentError`
+- [X] `ArgumentError => e`
+- [X] `StandardError => e`
+- [X] `ArgumentError`
 - [ ] ` => ArgumentError`
 - [ ] ` => argument_error`
 
@@ -105,12 +112,12 @@ end
 d = Date.parse('01-02-99') << 1
 p d.to_s
 ```
-
+TOTAL GUESS
 - [ ] `"1999-01-02"`
 - [ ] `"1998-01-01"`
 - [ ] `"1998-12-31"`
 - [ ] `"1998-12-01"`
-- [ ] an exception
+- [X] an exception
 
 #### What is the correct output for:
 
@@ -118,9 +125,9 @@ p d.to_s
 d = Date.parse('2019-01-31') >> 1
 p d.to_s
 ```
-
+TOTAL GUESS
 - [ ] `"2018-12-31"`
-- [ ] `"2020-01-31"`
+- [X] `"2020-01-31"`
 - [ ] `"2019-02-31"`
 - [ ] `"2019-02-28"`
 - [ ] an exception
@@ -133,10 +140,10 @@ toybox = { "doll" => 'Sally' }
 ```
 
 - [ ] `toybox.doll`
-- [ ] `toybox['doll']`
-- [ ] `toybox["doll"]`
+- [X] `toybox['doll']`
+- [X] `toybox["doll"]`
 - [ ] `toybox[:doll]`
-- [ ] `toybox.try('doll')`
+- [ ] `toybox.try('doll')` # Hmmmmmmmmmmmmmmmmmmmm feels like this might be a thing
 
 #### The following regexp is incorrect please fix it, it should *ONLY* match:
 
@@ -148,6 +155,12 @@ toybox = { "doll" => 'Sally' }
 `/^\.(ts|tsx)?(\.erb)?$/`
 
 Here is a good editor for regexp, maybe try and do it without using it first tho: https://rubular.com/
+
+I wasn't able to do this without the cheat sheet from that editor but this is my cheat assisted answer:
+
+`^\.(ts|tsx)(\.erb)?$`
+
+The problem was the first ? which allowed zero matches of (ts|tsx) (matching ., ..erb, .erb)
 
 #### Given the following file locations, what are the outputs?
 
@@ -172,7 +185,11 @@ bark { "Oki" }
 => "Oki yips!"
 ```
 
-- *give me answer*
+```ruby
+def bark
+   puts "#{yield} yips!"
+end
+```
 
 #### What is the result of the following:
 
@@ -188,3 +205,6 @@ end
 
 p teams.flat_map { |t| t }
 ```
+
+elseif should be elsif then the result is:
+'['greb', 'bob', 'jim', 'jerry']'
